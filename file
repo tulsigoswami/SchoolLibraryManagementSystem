@@ -1,0 +1,33 @@
+    product: HP EliteDesk 800 G2 DM 35W (L1W21AV)
+       product: 8055
+          product: Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
+             product: HMA81GS6AFR8N-UH
+          product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers
+             product: HD Graphics 530
+             product: 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller
+                product: xHCI Host Controller
+                   product: HP Wired Keyboard
+                   product: HP USB Optical Mouse
+                product: xHCI Host Controller
+             product: 100 Series/C230 Series Chipset Family Thermal Subsystem
+             product: 100 Series/C230 Series Chipset Family MEI Controller #1
+             product: 100 Series/C230 Series Chipset Family KT Redirection
+             product: Q170/Q150/B150/H170/H110/Z170/CM236 Chipset SATA Controller [AHCI Mode]
+             product: 100 Series/C230 Series Chipset Family PCI Express Root Port #6
+                product: Wireless 7265
+             product: Q170 Chipset LPC/eSPI Controller
+             product: 100 Series/C230 Series Chipset Family Power Management Controller
+             product: 100 Series/C230 Series Chipset Family HD Audio Controller
+             product: 100 Series/C230 Series Chipset Family SMBus
+             product: Ethernet Connection (2) I219-LM
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device PNP0b00
+          product: PnP device INT3f0d
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device IFX0102
+             product: CONSISTENT SSD S
+       product: Standard Efficiency
