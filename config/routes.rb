@@ -8,4 +8,5 @@ Rails.application.routes.draw do
    #get "/books/:id", to: "books#show"
 
    resources :books
+   resources :book_issue_requests, only: [:index,:create]
 end
