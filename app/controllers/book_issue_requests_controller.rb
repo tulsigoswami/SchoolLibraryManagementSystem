@@ -1,30 +1,41 @@
 class BookIssueRequestsController < ApplicationController
 
-   def index
-    if params[:status] =='issued'
-      @book_issue_requests = BookIssueRequest.where(status:"issued")
-      redirect_to @book_issue_request
-      #render json:@book_issue_requests
-    else
-      @book_issue_requests = BookIssueRequest.where(status:"requested")
-      # redirect_to @book_issue_request
+    def index
+      @book_issue_requests = BookIssueRequest.all
       render json:@book_issue_requests
     end
-   end
 
-   def create
-     @book_issue_request = BookIssueRequest.create(book_id:params[:book_id],student_id:params[:student_id],faculty_id:params[:faculty_id],status:params[:status])
+    def show
+     @book_issue_request = BookIssueRequest.find(params[:id])
+     render json: @book_issue_request
+    end
 
-     if @book_issue_request
-      render json:@book_issue_request
-     else
-      render json:@book_issue_request
+    def create
+     @book_issue_request = BookIssueRequest.new(book_id:params[:book_id],student_id:params[:student_id],faculty_id:1,status:"requested")
+
+      if @book_issue_request.save
+          @book_id  = @book_issue_request.book_id
+          if BooksController.check_book_availability(@book_id)
+
+             @book_issue_request.update(book_id:params[:book_id],student_id:params[:student_id],faculty_id:1,status:"issued", issue_date:Date.today)
+
+             render plain:'book issued successfully'
+          else
+             render plain: 'Book not available currently'
+          end
+      end
+    end
+
+    def update
+      @book_issue_request = BookIssueRequest.find(params[:id])
+     if @book_issue_request.update(book_request_issue_params)
+      render "index" , plain: 'Request updated'
      end
-   end
+    end
 
-   # private
+    private
+    def book_request_issue_params
+      params.permit(:book_id,:faculty_id,:category_id,:status)
+    end
 
-   # def book_issue_request_params
-   #     params.require(:book_issue_request).permit(:faculty_id, :book_id,:student_id,:status)
-   # end
 end

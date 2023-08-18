@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_09_052325) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_18_070230) do
   create_table "book_issue_requests", force: :cascade do |t|
     t.integer "student_id"
     t.integer "faculty_id"

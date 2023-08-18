@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-	
   self.inheritance_column = :type
 
   validates :name, presence: true
