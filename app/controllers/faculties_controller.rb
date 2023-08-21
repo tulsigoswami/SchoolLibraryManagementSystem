@@ -1,15 +1,8 @@
 class FacultiesController < ApplicationController
 
   def index
-   @faculty = Faculty.first
-   render json: @faculty
-  end
-
-  def update
-    @faculty = Faculty.find(params[:id])
-    if @faculty.update(faculty_params)
-      render plain: "Faculty information updated successfully"
-    end
+    @faculty = Faculty.all
+    render json: @faculty
   end
 
   private

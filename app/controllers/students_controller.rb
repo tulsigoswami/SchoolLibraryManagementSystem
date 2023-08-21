@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter:
+
   def index
    @student = Student.all
    render json: @student

@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
-    render json: @books
+    books = Book.all
+    render json: books
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
     if @book.save
      render json: @book
     else
@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   def show
    @book = Book.find(params[:id])
    if @book
-    render json: @book
+    render json: @book, serializer: BookSerializer
    end
   end
 

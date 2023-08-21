@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   def show
    @category = Category.find(params[:id])
    if @category
-    render json: @categorty
+    render json: @category
    end
   end
 

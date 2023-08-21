@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "books#index"
 
-  resources :faculties,only:[:update], shallow: true do
-    resources :books, only:[:index,:update,:destroy]
+  resources :faculties,shallow: true,only:[:index] do
+    resources :books, only:[:index,:create,:update,:destroy]
     resources :categories, only:[:index,:delete,:create]
     resources :book_issue_requests, only:[:update,:destroy]
   end
