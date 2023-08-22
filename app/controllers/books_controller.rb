@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = Book.create(book_params)
     if @book.save
      render json: @book
     else

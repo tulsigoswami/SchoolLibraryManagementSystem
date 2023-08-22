@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "books#index"
 
+      resources :users
+      # get 'users', to: 'users#index'
+
+
   resources :faculties,shallow: true,only:[:index] do
     resources :books, only:[:index,:create,:update,:destroy]
     resources :categories, only:[:index,:delete,:create]
     resources :book_issue_requests, only:[:update,:destroy]
   end
 
+  post 'auth/login', to: 'authentication#login'
   resources :students, only: [:show,:update,:create] do
     resources :books, only:[:show]
   end

@@ -4,7 +4,6 @@ class Book < ApplicationRecord
   belongs_to :faculty
   belongs_to :category
   has_one :image, as: :imageable, dependent: :destroy
-
 end
 
 
