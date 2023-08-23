@@ -1,6 +1,16 @@
 class ImagesController < ApplicationController
+  before_action :authorize_request,except: [:create_book_profile,:show]
 
   def create
+    if check_image(params[:imageable_id])
+      render plain:"Image already exist"
+    else
+      @image = Image.create(image_params)
+      render json: @image
+    end
+  end
+
+  def create_book_profile
     if check_image(params[:imageable_id])
       render plain:"Image already exist"
     else

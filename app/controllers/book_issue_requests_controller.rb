@@ -1,12 +1,13 @@
+require 'users_controller.rb'
 class BookIssueRequestsController < ApplicationController
-
+    before_action :authorize_request
     def index
-      @book_issue_requests = BookIssueRequest.all
-      render json:@book_issue_requests
+        @book_issue_requests = BookIssueRequest.all
+        render json:@book_issue_requests
     end
 
     def show
-     @book_issue_request = BookIssueRequest.find(params[:id])
+     @book_issue_request = BookIssueRequest.where(student_id:params[:student_id])
      render json: @book_issue_request
     end
 
@@ -16,7 +17,6 @@ class BookIssueRequestsController < ApplicationController
       if @book_issue_request.save
           @book_id  = @book_issue_request.book_id
           if BooksController.check_book_availability(@book_id)
-
              @book_issue_request.update(book_id:params[:book_id],student_id:params[:student_id],faculty_id:1,status:"issued", issue_date:Date.today)
 
              render plain:'book issued successfully'
@@ -35,7 +35,7 @@ class BookIssueRequestsController < ApplicationController
 
     private
     def book_request_issue_params
-      params.permit(:book_id,:faculty_id,:category_id,:status)
+      params.permit(:book_id,:faculty_id,:category_id,:status,:student_id)
     end
 
 end

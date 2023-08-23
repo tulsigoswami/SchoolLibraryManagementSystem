@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  before_action :authorize_request, except:[:index,:show]
   def index
     books = Book.all
     render json: books

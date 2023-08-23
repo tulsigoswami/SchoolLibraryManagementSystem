@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_22_105837) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_071159) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_105837) do
 
   create_table "images", force: :cascade do |t|
     t.string "imageable_type"
-    t.integer "imageable_id"
+    t.integer "imageable_id", unique: true
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_105837) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "type"
+    t.string "type", default: "Student"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"

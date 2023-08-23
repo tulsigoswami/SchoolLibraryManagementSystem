@@ -1,6 +1,6 @@
 class Student < User
   validates :name, presence: true
-  validates :email,format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},presence: true
+   validates :email,format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},presence: true
   validates :type, presence: true,inclusion: { in: %w[Student] }
    
   has_many :book_issue_requests, foreign_key: 'student_id'
@@ -16,10 +16,12 @@ class Student < User
     else
       book = Book.find_by_name(book_identifier)
     end
+
     if book.nil?
       puts "Book not found."
       return
     end
+
     faculty = Faculty.first
     if book.quantity > 0 
       book_issue_requests.create!(book_id: book.id, status: 'issued',student_id:self.id,
