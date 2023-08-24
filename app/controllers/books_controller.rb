@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
   before_action :authorize_request, except:[:index,:show]
+  before_action :authorize_faculty, only:[:create,:update,:destroy]
   def index
     books = Book.all
+    binding.break
     render json: books
   end
 

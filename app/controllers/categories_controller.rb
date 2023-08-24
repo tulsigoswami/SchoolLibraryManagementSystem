@@ -1,18 +1,9 @@
 class CategoriesController < ApplicationController
-
+  before_action :authorize_faculty, except: [:index, :show]
   def index
     @categories = Category.all
     render json: @categories
   end
-
-  # def create
-  #   @category = Category.create(name:params[:name])
-  #   if @category.save
-  #    render json: @category
-  #   else
-  #    render json: @category.errors.full_messages
-  #   end
-  # end
 
   def update
     @category = Category.find(params[:id])

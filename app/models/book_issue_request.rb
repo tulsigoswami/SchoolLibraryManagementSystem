@@ -3,5 +3,5 @@ class BookIssueRequest < ApplicationRecord
   belongs_to :faculty
   belongs_to :book
   
-  validates :status, presence: true
+  validates :status,:student_id,:book_id,presence: true
 end

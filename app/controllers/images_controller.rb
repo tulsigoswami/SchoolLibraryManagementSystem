@@ -1,5 +1,11 @@
 class ImagesController < ApplicationController
   before_action :authorize_request,except: [:create_book_profile,:show]
+  before_action :authorize_faculty, only: :index
+
+  def index
+    @image = Image.all.where(imageable_type:'User')
+    render json: @image
+  end
 
   def create
     if check_image(params[:imageable_id])
@@ -20,7 +26,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-  @image = Image.where('imageable_id =  ? and imageable_type = ?',params[:imageable_id],params[:imageable_type])
+  @image = Image.find_by(imageable_id:params[:imageable_id])
    render json:@image
   end
 

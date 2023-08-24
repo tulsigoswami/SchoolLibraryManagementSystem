@@ -1,6 +1,7 @@
 require 'users_controller.rb'
 class BookIssueRequestsController < ApplicationController
     before_action :authorize_request
+    before_action :authorize_faculty, except: :create
     def index
         @book_issue_requests = BookIssueRequest.all
         render json:@book_issue_requests
@@ -28,14 +29,14 @@ class BookIssueRequestsController < ApplicationController
 
     def update
       @book_issue_request = BookIssueRequest.find(params[:id])
-     if @book_issue_request.update(book_request_issue_params)
-      render "index" , plain: 'Request updated'
-     end
+      if @book_issue_request.update(book_request_issue_params)
+        render "index" , plain: 'Request updated'
+      end
     end
 
     private
     def book_request_issue_params
-      params.permit(:book_id,:faculty_id,:category_id,:status,:student_id)
+      params.permit(:book_id,:student_id,:status)
     end
 
 end
